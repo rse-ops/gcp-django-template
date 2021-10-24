@@ -36,8 +36,6 @@ them for your application, please [let us know](https://github.com/rse-ops/gcp-d
 This theme was originally developed by @vsoch under [stanford-rc](https://github.com/stanford-rc),
 and has been migrated here so she can continue to maintain it!
 
-## TODO: have better user creation process (with group ID)?
-
 License
 -------
 
