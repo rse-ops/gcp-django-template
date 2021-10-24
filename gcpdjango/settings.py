@@ -11,7 +11,7 @@ FACEBOOK_USERNAME = os.environ.get("FACEBOOK_USERNAME")
 GITHUB_REPOSITORY = os.environ.get("GITHUB_REPOSITORY")
 
 # Title for the website
-TITLE = os.environ.get("GCPDJANGO_TITLE", "gcp-django-stanford")
+TITLE = os.environ.get("GCPDJANGO_TITLE", "gcp-django-template")
 AUTHOR = os.environ.get("AUTHOR", "vsoch")
 KEYWORDS = os.environ.get("KEYWORDS", "django,template")
 
@@ -21,7 +21,7 @@ SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
 SENDGRID_SENDER_EMAIL = os.environ.get("SENDGRID_SENDER_EMAIL", HELP_CONTACT_EMAIL)
 
 TERMS_OF_SERVICE_URL = os.environ.get(
-    "TERMS_OF_SERVICE_URL", "https://www.stanford.edu/site/terms/"
+    "TERMS_OF_SERVICE_URL", "https://software.llnl.gov/about/licenses/"
 )
 DOMAIN_NAME = os.environ.get("DOMAIN_NAME", "http://127.0.0.1:8000")
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = DOMAIN_NAME

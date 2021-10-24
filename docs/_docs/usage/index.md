@@ -5,7 +5,7 @@ description: Basic usage of the Interface
 
 # Usage
 
-This is the user guide for the gcp-django-stanford template, including user and administrative views.
+This is the user guide for the gcp-django-template, including user and administrative views.
 
  - [Admin](admin) views for adding users and interacting with projects.
  - [Interface](interface) the primary interactions for a user

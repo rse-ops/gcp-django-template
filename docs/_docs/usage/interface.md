@@ -69,7 +69,7 @@ This action cannot be undone.
 
 ## Search
 
-For an unathenticated user, the search goes to the public search on the Stanford website.
+For an unathenticated user, the search goes to a public search
 When logged in, it searches across projects.
 
 ![interface-search.png]({{ site.baseurl }}/docs/usage/img/interface-search.png)

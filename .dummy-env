@@ -11,4 +11,4 @@ export SENDGRID_API_KEY=
 export SENDGRID_SENDER_EMAIL=
 export HELP_CONTACT_EMAIL=
 export TERMS_OF_SERVICE_URL=
-export GITHUB_REPOSITORY=https://github.com/stanford-rc/gcp-django-stanford/issues
+export GITHUB_REPOSITORY=https://github.com/rse-ops/gcp-django-template/issues

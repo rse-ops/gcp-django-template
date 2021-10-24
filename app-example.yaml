@@ -16,7 +16,7 @@ env_variables:
   HELP_CONTACT_EMAIL: email
   SENTRY_ID: xxxxxxxxxx
   DOMAIN_NAME: https://<project>.<region_id>.r.appspot.com
-  GITHUB_REPOSITORY: https://github.com/stanford-rc/gcp-django-stanford/issues
+  GITHUB_REPOSITORY: https://github.com/rse-ops/gcp-django-template/issues
   AUTHOR: vsoch
   KEYWORDS: example,template,django
 

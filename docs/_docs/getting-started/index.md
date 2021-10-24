@@ -17,8 +17,7 @@ the user documentation, see [the user guide]({{ site.baseurl }}/user-guide/).
 You will want to follow the instructions [here](https://cloud.google.com/appengine/docs/standard/python3/building-app/writing-web-service)
 and:
 
- - create a Google Cloud Project, you can request one at Stanford [here](https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=fa9f80bddbf05b401df130cf9d96198b)
- - install the gcloud command line client and Python3+
+ - create a Google Cloud Project - install the gcloud command line client and Python3+
  - authenticate on the command line with `gcloud auth application-default login`
 
 For example, after I've created my project and I've installed gcloud, I might login and
@@ -32,8 +31,8 @@ $ gcloud config set project <myproject>
 Then to work locally (if you are developing) you'll want to clone the project:
 
 ```bash
-git clone https://github.com/vsoch/gcp-django-stanford
-cd gcp-django-stanford
+git clone https://github.com/rse-ops/gcp-django-template
+cd gcp-django-template
 ```
 
 On the [Google Project Console](https://console.developers.google.com/apis) you might want to enable
@@ -244,7 +243,7 @@ And then you can open up your browser to [http://localhost:8000](http://localhos
 
 ### Database
 
-For our database, we use [Stanford managed SQL](https://uit.stanford.edu/service/sql).
+For our database, it's easiest to use some hosted SQL.
 We won't need this for local development, for which we will use sqlite (a local file database).
 If you ever need to delete and refresh this local testing database, you can do:
 
@@ -310,25 +309,18 @@ You can see the [Django docs for testing](https://docs.djangoproject.com/en/3.0/
 
 ### Deployment
 
-#### 1. Request Stanford AFS
+#### 1. Set up the database
 
-If you don't have a group on Stanford AFS, then you should [first request one](https://uit.stanford.edu/service/afs). This typically
-maps to a folder in the Stanford AFS web space, and we need this space to create a database there.
+You can either create a SQL database hosted on a cloud provider (ideally the same where you deploy) or request one at your institution.
 
-#### 2. Request Stanford Managed SQL
-
-Once you have the folder, you can self-request [Stanford managed SQL](https://uit.stanford.edu/service/sql).
-and the screen will take you immediately to a page with credentials to write into your .env file (for local setup)
-and your app.yaml (for deployment, discussed next).
-
-#### 3. Populate app.yaml
+#### 2. Populate app.yaml
 
 The app.yaml file that you created from the app-example.yaml (which you absolutely should not
 put environment variables in) should be populated with your environment variables from the .env
 file, along with your database credentials. As stated above, since we want to initialize the database from
 our local machine, we should also write them to the .env file.
 
-#### 4. Remove Migrations
+#### 3. Remove Migrations
 
 Since we are starting with a fresh database, we can safely remove the many migrations that we made
 for testing.
@@ -338,7 +330,7 @@ rm -rf gcpdjango/apps/users/migrations/
 rm -rf gcpdjango/apps/main/migrations
 ```
 
-#### 5. Setup Database Locally
+#### 4. Setup Database Locally
 
 If you haven't already, source your environment with the newly added database:
 
@@ -370,7 +362,7 @@ added as follows:
 python manage.py add_superuser <username>
 ```
 
-#### 6. Add your Group
+#### 5. Add your Group
 
 Since we added ourselves as users to the interface, we will want to
 edit our user to be associated with a center in the admin console. You can
@@ -380,7 +372,7 @@ You won't need to do this for all subsequent users that are invited via email,
 as they will select their group upon registration. This flow can of course be changed
 to allow for user registration, or login with social or other authentication.
 
-#### 7. Test the local interface
+#### 6. Test the local interface
 
 And then log in to the interface! It's good to look/test things now locally
 before deployment to make sure it works as expected.
@@ -389,7 +381,7 @@ before deployment to make sure it works as expected.
 make run
 ```
 
-#### 8. Google Cloud Permissions
+#### 7. Google Cloud Permissions
 
 Make sure that app engine is enabled, and that your user account (the email
 associated with your project) has create permissions for it. If you don't,
@@ -412,7 +404,7 @@ Then simply follow the instruction! Google permissions are kind of hairy, and
 I've seen different behavior over time. It's best to grant the minimal permissions
 you think are needed, and then adjust if necessary based on these messages.
 
-#### 9. Deploy
+#### 8. Deploy
 
 When you are ready, let's deploy to app engine! Remember that your app.yaml
 should be entirely populated. This is where your `.gcloudignore` is important -
@@ -435,8 +427,8 @@ $ gcloud app deploy
 Initializing App Engine resources...done.                                                                                                
 Services to deploy:
 
-descriptor:      [/home/vanessa/Desktop/Code/gcp-django-stanford/app.yaml]
-source:          [/home/vanessa/Desktop/Code/gcp-django-stanford]
+descriptor:      [/home/vanessa/Desktop/Code/gcp-django-template/app.yaml]
+source:          [/home/vanessa/Desktop/Code/gcp-django-template]
 target project:  [project]
 target service:  [default]
 target version:  [xxxxxxxxx]
