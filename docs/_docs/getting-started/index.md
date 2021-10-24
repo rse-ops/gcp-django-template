@@ -218,8 +218,14 @@ python manage.py makemigrations main
 python manage.py migrate
 ```
 
-But to make it easier, there is an included Makefile that can be used to make
-migrations, and then migrate.
+And to collect static files:
+
+```bash
+python manage.py collectstatic
+```
+
+But to make it easier, there is an included Makefile that can be used to collect static files,
+make migrations, and then migrate.
 
 ```bash
 make migrations

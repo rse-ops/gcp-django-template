@@ -5,8 +5,7 @@ import uuid
 
 
 class Project(models.Model):
-    """A project is owned by a group, and includes one or more form templates.
-    """
+    """A project is owned by a group, and includes one or more form templates."""
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
@@ -22,7 +21,9 @@ class Project(models.Model):
     )
 
     # A project must be owned by a group, and the contact must be a user
-    group = models.ForeignKey("users.Group", on_delete=models.PROTECT, blank=False)
+    group = models.ForeignKey(
+        "users.Group", on_delete=models.PROTECT, blank=True, null=True
+    )
     contact = models.ForeignKey("users.User", on_delete=models.PROTECT, blank=False)
 
     def get_absolute_url(self):
@@ -36,8 +37,7 @@ class Project(models.Model):
 
 
 class FormTemplate(models.Model):
-    """A form template collects basic information about the project.
-    """
+    """A form template collects basic information about the project."""
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 

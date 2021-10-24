@@ -24,8 +24,7 @@ from gcpdjango.apps.main.forms import (
 @login_required
 @user_agree_terms
 def project_details(request, uuid):
-    """Return a project, or 404.
-    """
+    """Return a project, or 404."""
     try:
         project = Project.objects.get(uuid=uuid)
         return render(
@@ -39,8 +38,7 @@ def project_details(request, uuid):
 @login_required
 @user_agree_terms
 def user_projects(request):
-    """Return a user listing of projects
-    """
+    """Return a user listing of projects"""
     projects = None
     if request.user.group is not None:
         projects = Project.objects.filter(group=request.user.group)
@@ -51,8 +49,7 @@ def user_projects(request):
 @login_required
 @user_agree_terms
 def all_projects(request, projects=None):
-    """Return a project, or 404.
-    """
+    """Return a project, or 404."""
     if projects is None:
         projects = Project.objects.all()
     return render(request, "projects/all_projects.html", context={"projects": projects})
@@ -81,8 +78,7 @@ def new_project(request):
 @login_required
 @user_agree_terms
 def edit_form_template(request, uuid):
-    """edit a form template
-    """
+    """edit a form template"""
     try:
         project = Project.objects.get(uuid=uuid)
     except Project.DoesNotExist:
@@ -93,7 +89,8 @@ def edit_form_template(request, uuid):
         # If the form already belongs to another group
         if project.group != None and project.group != request.user.group:
             messages.warning(
-                request, "You are not allowed to edit a form not owned by your group.",
+                request,
+                "You are not allowed to edit a form not owned by your group.",
             )
             return redirect("index")
 
@@ -120,7 +117,9 @@ def edit_form_template(request, uuid):
         if project.form is not None:
             form = FormTemplateForm(initial=model_to_dict(project.form))
     return render(
-        request, "projects/edit_form_template.html", {"form": form, "project": project},
+        request,
+        "projects/edit_form_template.html",
+        {"form": form, "project": project},
     )
 
 
@@ -135,7 +134,8 @@ def view_project_form(request, uuid):
         # If the form already belongs to another group
         if project.group != None and project.group != request.user.group:
             messages.warning(
-                request, "You are not allowed to edit a form not owned by your group.",
+                request,
+                "You are not allowed to edit a form not owned by your group.",
             )
             return redirect("index")
 

@@ -18,7 +18,7 @@ class ProjectForm(forms.ModelForm):
 
 class FormTemplateForm(forms.ModelForm):
     """A form to populate a project template. Commented out fields are
-       not required for stage 1
+    not required for stage 1
     """
 
     stage = 1

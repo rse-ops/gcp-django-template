@@ -51,8 +51,7 @@ def contact_view(request):
 
 @ratelimit(key="ip", rate=rl_rate, block=rl_block)
 def search_view(request, query=None):
-    """search projects. This is available to anyone with a login    
-    """
+    """search projects. This is available to anyone with a login"""
     context = {"submit_result": "anything"}
 
     # First go, see if the user added a query variable as a GET request
@@ -69,8 +68,7 @@ def search_view(request, query=None):
 
 @ratelimit(key="ip", rate=rl_rate, block=rl_block)
 def run_search(request):
-    """The driver to show results for a parts search.
-    """
+    """The driver to show results for a parts search."""
     if request.method == "POST":
         q = request.POST.get("q")
     else:
@@ -86,8 +84,7 @@ def run_search(request):
 
 
 def run_query(q, available=False):
-    """search across projects and groups.
-    """
+    """search across projects and groups."""
     # If the user adds hashtag, remove
     if q.startswith("#"):
         q = q.replace("#", "", 1)
@@ -104,8 +101,7 @@ def run_query(q, available=False):
 
 
 def projects_query(q):
-    """specific search for distributions
-    """
+    """specific search for distributions"""
     return Project.objects.filter(
         Q(name__icontains=q) | Q(group__name__icontains=q) | Q(description__icontains=q)
     ).distinct()

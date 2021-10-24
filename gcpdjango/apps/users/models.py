@@ -13,9 +13,9 @@ import uuid
 def get_instance(uid, Model):
     """get a instance based on UID
 
-       Parameters
-       ==========
-       uid: the id of the instance
+    Parameters
+    ==========
+    uid: the id of the instance
     """
     keyargs = {"id": uid}
     try:
@@ -34,8 +34,7 @@ def get_user(uid):
 
 
 class CustomUserManager(BaseUserManager):
-    """Create and save a User with the given username, email and password.
-    """
+    """Create and save a User with the given username, email and password."""
 
     def _create_user(
         self, username, email, password, is_staff, is_superuser, **extra_fields
@@ -64,13 +63,13 @@ class CustomUserManager(BaseUserManager):
         return self._create_user(username, email, password, True, True, **extra_fields)
 
     def add_superuser(self, user):
-        """ Intended for existing user"""
+        """Intended for existing user"""
         user.is_superuser = True
         user.save(using=self._db)
         return user
 
     def add_staff(self, user):
-        """ Intended for existing user"""
+        """Intended for existing user"""
         user.is_staff = True
         user.save(using=self._db)
         return user
@@ -103,7 +102,7 @@ class User(AbstractUser):
 
 class Group(models.Model):
     """A group of users with shared affiliation. It can have
-       one or more owners to manage it.
+    one or more owners to manage it.
     """
 
     name = models.CharField(max_length=50, unique=True, default=None)
@@ -120,8 +119,7 @@ class Group(models.Model):
 
     @property
     def uuid(self):
-        """Derive a unique id from the group name
-        """
+        """Derive a unique id from the group name"""
         if self.name is not None:
             return self.name.lower().replace(" ", "-")
 

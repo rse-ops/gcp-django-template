@@ -32,6 +32,9 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = DOMAIN_NAME
 # SECURITY WARNING: keep the secret key used in production secret!
 # Update the secret key to a value of your own before deploying the app.
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+if not SECRET_KEY:
+    print("WARNING: using default secret key - you MUST change for production!")
+    SECRET_KEY = "bananaramabobanana"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

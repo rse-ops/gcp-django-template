@@ -42,8 +42,6 @@ These terms are always available via a link in the footer. The content itself
 is maintained in a Google Document so updating it doesn't require updating the 
 site itself.
 
-![interface-terms-full.png]({{ site.baseurl }}/docs/usage/img/interface-terms-full.png)
-
 <br>
 
 Once the user has logged in, the login panel changes to a user settings panel.
